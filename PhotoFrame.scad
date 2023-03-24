@@ -66,12 +66,22 @@ if (object_type == "frame") {
   difference() {
     cube([inner_photo_dimensions.x + 2*frame_width, inner_photo_dimensions.y + 2*frame_width, thickness]);
 
-    translate([photo_position.x, photo_position.y, -0.001]) cube([inner_photo_dimensions.x, inner_photo_dimensions.y, thickness + 0.002]);
-    translate([photo_position.x - inner_photo_margin - outer_photo_margin, photo_position.y - inner_photo_margin - outer_photo_margin, -front_depth]) cube([outer_photo_dimensions.x, outer_photo_dimensions.y, thickness]);
+    translate([photo_position.x, photo_position.y, -0.001])
+      cube([inner_photo_dimensions.x, inner_photo_dimensions.y, thickness + 0.002]);
+    translate([photo_position.x - inner_photo_margin - outer_photo_margin, photo_position.y - inner_photo_margin - outer_photo_margin, -front_depth])
+      cube([outer_photo_dimensions.x, outer_photo_dimensions.y, thickness]);
     
     // Clip slots
-    translate([photo_position.x - inner_photo_margin - outer_photo_margin - 2, photo_position.y + (inner_photo_dimensions.y - 5)/2, thickness - front_depth - 2]) cube([20, 5, 2]);
-    translate([photo_position.x + inner_photo_dimensions.x + inner_photo_margin + outer_photo_margin - 20 + 2, photo_position.y + (inner_photo_dimensions.y - 5)/2, thickness - front_depth - 2]) cube([20, 5, 2]);
+    translate([
+      photo_position.x - inner_photo_margin - outer_photo_margin - 2,
+      photo_position.y + (inner_photo_dimensions.y - 5)/2,
+      thickness - front_depth - 2
+    ]) cube([20, 5, 2]);
+    translate([
+      photo_position.x + inner_photo_dimensions.x + inner_photo_margin + outer_photo_margin - 20 + 2,
+      photo_position.y + (inner_photo_dimensions.y - 5)/2,
+      thickness - front_depth - 2
+    ]) cube([20, 5, 2]);
 
     // Hanger hole
     translate([inner_photo_dimensions.x / 2 + frame_width, inner_photo_dimensions.y + 2*frame_width - 1, 0]) hanger_hole();
