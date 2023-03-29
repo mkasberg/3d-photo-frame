@@ -1,13 +1,22 @@
-// Mike's Experiment for Elevation 3D Print
+/*
+Parametric Photo Frame
+by Mike Kasberg
+
+A rectangular photo frame that allows you to customize dimensions and depth.
+*/
 
 
 // E.g. 4x6, 5x7, etc.
-// 6x4 = [154, 103]
-// 3.5x2.5 = [88.9, 63.5]
+// 7x5 ....... [177.8, 127]
+// 6x4 ....... [154, 103]
+// 3.5x2.5 ... [88.9, 63.5]
+// 5x7 ....... [172, 177.8]
+// 4x6 ....... [103, 154]
+// 2.5x3.5 ... [63.5, 88.9]
+// Dimensions of the photo to hold (mm)
 nominal_dimensions = [154, 103];
 
-// Object to print
-// "frame", "back"
+// Object to print: "frame", "back"
 object_type = "frame";
 
 
@@ -20,13 +29,13 @@ back_depth = 8;
 // Width of a single edge of the frame.
 frame_width = 10;
 
-// Where the front of the frame overlaps the photo
-inner_photo_margin = 2;
+// Where the front of the frame overlaps the photo.
+inner_photo_margin = 3;
 
-// Tolerance around the outside of the photo on the back of the frame
+// Tolerance around the outside of the photo on the back of the frame.
 outer_photo_margin = 1;
 
-// The back plate that holds the photo.
+// Thickness of the back plate that holds the photo.
 back_plate_thickness = 1;
 
 // END Params.
@@ -73,12 +82,12 @@ if (object_type == "frame") {
     
     // Clip slots
     translate([
-      photo_position.x - inner_photo_margin - outer_photo_margin - 2,
+      photo_position.x - inner_photo_margin - outer_photo_margin - 3,
       photo_position.y + (inner_photo_dimensions.y - 5)/2,
       thickness - front_depth - 2
     ]) cube([20, 5, 2]);
     translate([
-      photo_position.x + inner_photo_dimensions.x + inner_photo_margin + outer_photo_margin - 20 + 2,
+      photo_position.x + inner_photo_dimensions.x + inner_photo_margin + outer_photo_margin - 20 + 3,
       photo_position.y + (inner_photo_dimensions.y - 5)/2,
       thickness - front_depth - 2
     ]) cube([20, 5, 2]);
